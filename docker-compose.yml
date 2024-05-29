@@ -1,0 +1,15 @@
+version: "2.20.2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - djangoProject/docker.env
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/srv/app
+    environment:
+      - PYTHONUNBUFFERED=1
